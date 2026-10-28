@@ -10,10 +10,10 @@ import {
 
 const menuItems = [
     { label: 'Màn hình chính', icon: LayoutDashboard },
-    { label: 'Quản lý chung',  icon: LayoutList },
-    { label: 'Hệ thống RFID',  icon: Blocks },
+    { label: 'Quản lý chung', icon: LayoutList },
+    { label: 'Hệ thống RFID', icon: Blocks },
     { label: 'Quản lý vận chuyển', icon: Container },
-    { label: 'Tra cứu',        icon: FileSearch },
+    { label: 'Tra cứu', icon: FileSearch },
 ]
 
 interface SidebarProps {
@@ -30,7 +30,6 @@ export default function Sidebar({ collapsed }: SidebarProps) {
             transition-all duration-300 ease-in-out
             ${collapsed ? 'w-16' : 'w-64'}
         `}>
-            {/* Logo */}
             <div className="flex items-center gap-3 border-b border-slate-900 px-[14px] py-5">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-black shadow-sm">
                     <Boxes size={20} strokeWidth={2.2} />
@@ -46,15 +45,11 @@ export default function Sidebar({ collapsed }: SidebarProps) {
                     </div>
                 )}
             </div>
-
-            {/* Section label */}
             {!collapsed && (
                 <div className="px-5 pb-2 pt-5 text-[11px] font-bold uppercase tracking-wider text-slate-500">
                     Menu chính
                 </div>
             )}
-
-            {/* Nav */}
             <nav className="flex-1 space-y-1 px-2 py-2">
                 {menuItems.map(({ label, icon: Icon }) => {
                     const isActive = active === label
@@ -77,8 +72,6 @@ export default function Sidebar({ collapsed }: SidebarProps) {
                     )
                 })}
             </nav>
-
-            {/* Footer */}
             <div className="border-t border-slate-900 px-5 py-4">
                 {collapsed
                     ? <span className="block text-center text-xs text-slate-600">v1</span>

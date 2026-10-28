@@ -44,10 +44,10 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                     title="Thông báo"
                 >
                     <Bell size={18} />
-                    <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-blue-500" />
+                    <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-white" />
                 </button>
 
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-800 text-xs font-bold text-white border border-slate-700">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-800 text-xs font-bold text-white">
                     A
                 </div>
             </div>

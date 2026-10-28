@@ -6,7 +6,7 @@ import {
 } from 'recharts'
 import { TrendingDown, TrendingUp } from 'lucide-react'
 import { netFlowData } from '../../../data/chartData'
-import { tooltip } from './tool'
+import { tooltip } from '../UI/Tooltip'
 
 export interface NetFlowPoint {
     month: string

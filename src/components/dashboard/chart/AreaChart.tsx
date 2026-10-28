@@ -5,7 +5,7 @@ import {
     XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts'
 import { areaData3M, areaData30D, areaData7D, brandProduction } from '../../../data/chartData'
-import { tooltip } from './tool'
+import { tooltip } from '../UI/Tooltip'
 
 export default function Area_Chart() {
     const [activeRange, setActiveRange] = useState<'3m' | '30d' | '7d'>('3m')

@@ -31,7 +31,7 @@ export default function StatCard({
                 {value}
             </div>
 
-            <div className="mt-4 border-t border-[#1e293b] pt-3">
+            <div className="mt-4 pt-3">
                 <div className="flex items-center gap-1.5 text-xs font-medium text-slate-300">
                     <TrendIcon className="h-3.5 w-3.5 text-slate-400 text-white" />
                     <span>{comparisonTitle}</span>
