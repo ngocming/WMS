@@ -2,7 +2,7 @@ import { Bell, Search } from 'lucide-react'
 
 export default function Header() {
     return (
-        <header className="sticky top-0 z-30 flex items-center justify-between gap-4 border-b border-slate-800 bg-slate-950 px-6 py-3">
+        <header className="sticky top-0 z-30 flex items-center justify-between gap-4 border-b border-slate-800 bg-black px-6 py-3">
             <div className="hidden md:block">
                 <p className="text-sm text-slate-400">
                     Theo dõi hoạt động kho hàng của bạn
@@ -19,7 +19,7 @@ export default function Header() {
                 </div>
                 <div className="relative cursor-pointer text-slate-400 hover:text-white">
                     <Bell size={18} />
-                    <span className="absolute right-0 top-0 h-1.5 w-1.5 rounded-full bg-blue-500" />
+                    <span className="absolute right-0 top-0 h-1.5 w-1.5 rounded-full bg-whites" />
                 </div>
 
                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-xs font-bold text-white">

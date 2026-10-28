@@ -6,7 +6,7 @@ import {
 } from 'recharts'
 import { TrendingDown, TrendingUp } from 'lucide-react'
 import { netFlowData } from '../../../data/chartData'
-import { tooltip, SectionTitle } from './tool'
+import { tooltip } from './tool'
 
 export interface NetFlowPoint {
     month: string
@@ -31,11 +31,13 @@ export default function Line_Chart({ data }: LineChartProps) {
 
     return (
         <section className="rounded-xl border border-slate-800 bg-black p-5">
-            <SectionTitle
-                title="Dòng Hàng Ròng"
-                sub="Dòng chảy ròng hàng hóa (chênh lệch giữa nhập và xuất của kho theo thời gian) trong 6 tháng"
-            />
-            <div className="h-52">
+            <div>
+                <h3 className="text-lg font-medium">Dòng Hàng Ròng</h3>
+                <p className="mt-0.5 text-sm text-zinc-400">
+                    Dòng chảy ròng hàng hóa (chênh lệch giữa nhập và xuất của kho theo thời gian) trong 6 tháng
+                </p>
+            </div>
+            <div className="mt-4 h-52">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={visibleData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />

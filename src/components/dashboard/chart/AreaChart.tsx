@@ -5,7 +5,7 @@ import {
     XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts'
 import { areaData3M, areaData30D, areaData7D } from '../../../data/chartData'
-import { tooltip, SectionTitle } from './tool'
+import { tooltip } from './tool'
 
 export default function Area_Chart() {
     const [activeRange, setActiveRange] = useState<'3m' | '30d' | '7d'>('3m')
@@ -22,10 +22,12 @@ export default function Area_Chart() {
     return (
         <section className="xl:col-span-2 rounded-xl border border-slate-800 bg-black p-5">
             <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-                <SectionTitle
-                    title="Sản Lượng Thành Phẩm"
-                    sub="Chi tiết theo nhãn hàng"
-                />
+                <div>
+                    <h3 className="text-lg font-medium">Sản Lượng Thành Phẩm</h3>
+                    <p className="mt-0.5 text-sm text-zinc-400">
+                        Chi tiết theo nhãn hàng
+                    </p>
+                </div>
 
                 <div className="flex rounded-lg border border-slate-700 bg-black p-0.5">
                     {ranges.map(({ key, label }) => (
@@ -33,7 +35,7 @@ export default function Area_Chart() {
                             key={key}
                             onClick={() => setActiveRange(key)}
                             className={`rounded px-3 py-1.5 text-xs font-medium transition-colors ${activeRange === key
-                                ? 'bg-blue-600 text-white'
+                                ? 'bg-gray-500 text-white'
                                 : 'text-slate-400 hover:text-white'
                                 }`}
                         >
@@ -43,11 +45,14 @@ export default function Area_Chart() {
                 </div>
             </div>
 
-            <div className="mb-5 flex flex-wrap gap-6">
+            <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[['UGG', '183,892'], ['TEVA', '0'], ['KOOLABURRA', '0']].map(([brand, val]) => (
-                    <div key={brand}>
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{brand}</p>
-                        <p className="text-xl font-bold text-white">{val}</p>
+                    <div
+                        key={brand}
+                        className="rounded-lg border border-slate-800 bg-black p-3 "
+                    >
+                        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">{brand}</p>
+                        <p className="mt-1 text-xl font-bold text-white">{val}</p>
                     </div>
                 ))}
             </div>

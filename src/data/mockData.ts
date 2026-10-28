@@ -2,11 +2,15 @@ import type { StatCardData } from "../types/dashboard"
 import { monthlyData } from "./chartData"
 
 const validMonths = monthlyData.filter((d) => d.inbound > 0 || d.outbound > 0)
+
 const currentMonth = validMonths[validMonths.length - 1] ?? { inbound: 0, outbound: 0 }
+
 const prevMonth = validMonths[validMonths.length - 2] ?? { inbound: 0, outbound: 0 }
 
 const totalInbound = validMonths.reduce((sum, d) => sum + d.inbound, 0)
+
 const totalOutbound = validMonths.reduce((sum, d) => sum + d.outbound, 0)
+
 const currentStock = Math.max(0, totalInbound - totalOutbound)
 
 const calcChange = (curr: number, prev: number) => {

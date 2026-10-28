@@ -8,12 +8,3 @@ export const tooltip = {
     },
     cursor: { fill: 'rgba(255,255,255,0.04)' },
 }
-
-export function SectionTitle({ title, sub }: { title: string; sub?: string }) {
-    return (
-        <div className= "mb-4" >
-        <h2 className="text-base font-semibold text-white" > { title } </h2>
-    { sub && <p className="mt-0.5 text-xs text-slate-500" > { sub } </p> }
-    </div>
-    )
-}

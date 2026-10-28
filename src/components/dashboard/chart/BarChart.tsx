@@ -4,16 +4,18 @@ import {
     XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts'
 import { monthlyData } from '../../../data/chartData'
-import { tooltip, SectionTitle } from './tool'
+import { tooltip} from './tool'
 
 export default function Bar_Chart() {
     return (
         <section className="rounded-xl border border-slate-800 bg-black p-5 xl:col-span-2">
             <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-                <SectionTitle
-                    title="Tổng Quan Nhập / Xuất Kho"
-                    sub="Tháng 01 – Tháng 12 · 2026"
-                />
+                <div>
+                    <h3 className="text-lg font-medium">Tổng Quan Nhập / Xuất Kho</h3>
+                    <p className="mt-0.5 text-sm text-zinc-400">
+                        Tháng 01 – Tháng 12 · 2026
+                    </p>
+                </div>
                 <span className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-slate-400">
                     2026
                 </span>
