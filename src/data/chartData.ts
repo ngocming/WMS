@@ -50,4 +50,11 @@ export const areaData7D = [
     '11 thg 10', '12 thg 10', '13 thg 10', '14 thg 10',
 ].map((date, i) => ({ date, UGG: seed(i, 120000, 40000, 2) }))
 
+export const brandProduction = [
+    { brand: 'UGG', value: 183892 },
+    { brand: 'TEVA', value: 0 },
+    { brand: 'KOOLABURRA', value: 0 },
+]
+
 export const areaChartData = areaData3M
+

@@ -39,7 +39,7 @@ export default function Pie_Chart() {
                             data={stockConditionData}
                             dataKey="value"
                             cx="50%" cy="50%"
-                            innerRadius={95} outerRadius={100}
+                            innerRadius={93} outerRadius={100}
                             paddingAngle={2}
                             stroke="none"
                             isAnimationActive={false}
@@ -70,7 +70,7 @@ export default function Pie_Chart() {
                     <select
                         value={selected}
                         onChange={e => setSelected(e.target.value)}
-                        className="appearance-none rounded-lg border border-slate-700 bg-slate-900 py-2 pl-8 pr-8 text-sm text-slate-200 outline-none focus:border-blue-500 cursor-pointer"
+                        className="appearance-none rounded-lg border border-slate-700 bg-black py-2 pl-8 pr-8 text-sm text-slate-200 outline-none focus:border-blue-500 cursor-pointer"
                     >
                         {stockConditionData.map(d => (
                             <option key={d.name} value={d.name}>{d.name}</option>
@@ -84,7 +84,7 @@ export default function Pie_Chart() {
 
             <div className="mt-4 border-t border-slate-800 pt-4">
                 <p className="text-sm font-semibold text-white">
-                    Số lượng kiểm kê : 2,577 (prs/pcs)
+                    Số lượng kiểm kê : {TOTAL.toLocaleString('vi-VN')} (prs/pcs)
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
                     Tổng số lượng tồn kho được cập nhật theo kiểm kê mới nhất.

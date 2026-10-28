@@ -1,5 +1,4 @@
 export type StatCardData = {
-    id?: string
     title: string
     value: string
     badge: {

@@ -57,7 +57,7 @@ export default function Line_Chart({ data }: LineChartProps) {
             <div className="mt-3 border-t border-slate-800 pt-3">
                 <p className="flex items-center gap-1.5 text-xs font-medium">
                     Xu hướng {isDown ? `giảm (${diffPct}%)` : `tăng (+${diffPct}%)`} tháng này
-                    {isDown ? <TrendingDown className="h-3 w-3 text-rose-400" /> : <TrendingUp className="h-3 w-3 text-emerald-400" />}
+                    {isDown ? <TrendingDown className="h-3 w-3 text-white" /> : <TrendingUp className="h-3 w-3 text-white" />}
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
                     {firstMonth && lastMonth ? `${firstMonth} – ${lastMonth} · 6 tháng gần nhất` : '6 tháng gần nhất'}

@@ -1,75 +1,87 @@
-# React + TypeScript + Vite
+# 📦 WMS Dashboard — Hệ Thống Quản Lý Kho Thông Minh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Giao diện Dashboard phân tích và giám sát hoạt động kho hàng thời gian thực, thiết kế theo phong cách tối hiện đại (Dark Theme), tối ưu hóa trải nghiệm người dùng và đảm bảo tính nhất quán dữ liệu giữa các chỉ số KPI và biểu đồ trực quan.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎯 Mục Tiêu Dự Án (Project Objectives)
 
-## React Compiler
+- **Trực quan hóa hoạt động kho hàng**: Cung cấp bức tranh toàn diện về lưu lượng nhập - xuất, mức tồn kho thực tế, vòng quay kho và cơ cấu hàng hóa.
+- **Tính toàn vẹn & nhất quán dữ liệu (Data Integrity)**: Toàn bộ số liệu trên thẻ KPI, biểu đồ cột Nhập/Xuất, đường xu hướng Dòng Hàng Ròng, tỷ trọng Hàng Lỗi và sản lượng Thương Hiệu đều được tính toán và dẫn xuất từ nguồn dữ liệu cốt lõi duy nhất.
+- **Tối ưu trải nghiệm Dashboard**: Giao diện chuẩn dark mode hiện đại, bố cục dạng lưới responsive, thanh bên (Sidebar) cố định tinh gọn, tương tác mượt mà trên mọi thiết bị.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📊 Mô Hình Dữ Liệu & Đồng Bộ (Data Synchronization)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Hệ thống loại bỏ hoàn toàn tình trạng số liệu xung đột giữa KPI và đồ thị:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Thành phần | Nguồn dữ liệu & Cơ chế tính | Ý nghĩa số liệu |
+| :--- | :--- | :--- |
+| **KPI Xuất Kho (Tháng này)** | Lấy từ `monthlyData[current].outbound` | So sánh tự động với tháng liền trước tính % tăng/giảm và số lượng chênh lệch |
+| **KPI Nhập Kho (Tháng này)** | Lấy từ `monthlyData[current].inbound` | So sánh tự động với tháng trước, định dạng số bản địa (`vi-VN`) |
+| **KPI Tồn Kho Hiện Tại** | `∑ Nhập Kho − ∑ Xuất Kho` | Phản ánh chính xác tổng lượng hàng đang lưu kho thực tế |
+| **Biểu Đồ Cột (Bar Chart)** | Trực quan hóa 12 tháng từ `monthlyData` | Tương quan dòng nhập và xuất kho theo từng chu kỳ |
+| **Dòng Hàng Ròng (Line Chart)** | Dẫn xuất động: `\|inbound − outbound\|` | Trượt 6 tháng gần nhất, tự động tính xu hướng tăng/giảm tháng mới nhất |
+| **Cơ Cấu Hàng Lỗi (Pie Chart)** | `stockConditionData` (Loại B, Loại khác) | Donut Chart với vòng active viền nổi, dropdown chọn loại xem chi tiết số lượng tâm và kiểm kê tổng |
+| **Sản Lượng Thành Phẩm (Area Chart)**| Nhãn hàng (`UGG`, `TEVA`, `KOOLABURRA`) & Area theo mốc 7D / 30D / 3M | Phân tích xu hướng sản lượng theo thời gian và từng nhãn hiệu |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠 Công Nghệ Sử Dụng (Tech Stack)
 
+- **Ngôn ngữ & Nền tảng**: [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **Bundler**: [Vite](https://vitejs.dev/)
+- **Giao diện & Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Biểu đồ trực quan (Data Viz)**: [Recharts v3](https://recharts.org/)
+- **Hệ thống Icon**: [Lucide React](https://lucide.dev/)
+
+---
+
+## 🖼 Ảnh Chụp Giao Diện Dashboard (Dashboard Preview)
+
+```text
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│  WMS Dashboard                                                           [Search] [🔔]  │
+├──────────────┬─────────────────────────────────────────────────────────────────────────┤
+│ 📊 Tổng quan │  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐│
+│ 📥 Nhập kho  │  │ Xuất Kho      │ │ Nhập Kho      │ │ Tồn Kho       │ │ Vòng Quay     ││
+│ 📤 Xuất kho  │  │ 23.410 đôi    │ │ 72.680 đôi    │ │ 164.720 đôi   │ │ 4.6x          ││
+│ 📦 Hàng tồn  │  │ ↓ -82.3%      │ │ ↓ -51.2%      │ │ ↑ Đạt 95% CS  │ │ ↑ +15% TB     ││
+│ 🏷️ Nhãn hiệu │  └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘│
+│ ⚙️ Cài đặt   │  ┌───────────────────────────────────────────────┐ ┌───────────────────┐│
+│              │  │ Biểu đồ Nhập/Xuất 12 tháng (Bar Chart)        │ │ Dòng Hàng Ròng    ││
+│              │  │ █ Nhập kho   █ Xuất kho                       │ │ (Line Chart 6M)   ││
+│              │  └───────────────────────────────────────────────┘ └───────────────────┘│
+│              │  ┌───────────────────────────────────────────────┐ ┌───────────────────┐│
+│              │  │ Sản Lượng Thành Phẩm (Area Chart) [7D|30D|3M] │ │ Tồn Kho Hàng Lỗi  ││
+│              │  │ [ UGG: 183.892 ] [ TEVA: 0 ] [ KOOLA: 0 ]     │ │ (Donut + Filter)  ││
+│              │  └───────────────────────────────────────────────┘ └───────────────────┘│
+└──────────────┴─────────────────────────────────────────────────────────────────────────┘
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+> *Ảnh chụp thực tế:* Lưu ảnh chụp màn hình vào `docs/screenshots/dashboard.png` để hiển thị trực tiếp trong README:
+>
+> ![WMS Dashboard Dark Theme](docs/screenshots/dashboard.png)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Hướng Dẫn Cài Đặt & Chạy Ứng Dụng (Getting Started)
 
+### 1. Cài đặt dependencies
+```bash
+npm install
 ```
+
+### 2. Khởi chạy môi trường Dev
+```bash
+npm run dev
+```
+Truy cập dashboard tại: `http://localhost:5173`
+
+### 3. Đóng gói kiểm tra Production
+```bash
+npm run build
+npm run preview
+```
+

@@ -15,13 +15,14 @@ export default function StatCard({
     const TrendIcon = trend === 'down' ? TrendingDown : TrendingUp
 
     return (
-        <div className="rounded-xl border border-[#1e293b] bg-black p-5 hover:border-slate-700">
+        <div className="rounded-xl border border-slate-800 bg-black p-5 hover:border-gray-500">
             <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-slate-400">{title}</span>
-                <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-semibold ${
-                    isNegative ? 'bg-rose-950/60 text-rose-400' : 'bg-emerald-950/60 text-emerald-400'
+                <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-semibold 
+                    ${isNegative ?
+                        'bg-rose-950/60 text-rose-400' : 'bg-emerald-950/60 text-emerald-400'
                     }`}>
-                    <TrendIcon className="h-3 w-3" />
+                    <TrendIcon className="h-3 w-3 text-white" />
                     {badge.value}
                 </span>
             </div>
@@ -32,7 +33,7 @@ export default function StatCard({
 
             <div className="mt-4 border-t border-[#1e293b] pt-3">
                 <div className="flex items-center gap-1.5 text-xs font-medium text-slate-300">
-                    <TrendIcon className="h-3.5 w-3.5 text-slate-400" />
+                    <TrendIcon className="h-3.5 w-3.5 text-slate-400 text-white" />
                     <span>{comparisonTitle}</span>
                 </div>
                 <p className="mt-1 text-[11px] text-slate-500">{comparisonDetail}</p>

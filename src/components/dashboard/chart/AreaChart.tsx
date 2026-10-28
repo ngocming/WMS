@@ -4,7 +4,7 @@ import {
     AreaChart, Area,
     XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts'
-import { areaData3M, areaData30D, areaData7D } from '../../../data/chartData'
+import { areaData3M, areaData30D, areaData7D, brandProduction } from '../../../data/chartData'
 import { tooltip } from './tool'
 
 export default function Area_Chart() {
@@ -46,18 +46,19 @@ export default function Area_Chart() {
             </div>
 
             <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {[['UGG', '183,892'], ['TEVA', '0'], ['KOOLABURRA', '0']].map(([brand, val]) => (
+                {brandProduction.map(({ brand, value }) => (
                     <div
                         key={brand}
                         className="rounded-lg border border-slate-800 bg-black p-3 "
                     >
                         <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">{brand}</p>
-                        <p className="mt-1 text-xl font-bold text-white">{val}</p>
+                        <p className="mt-1 text-xl font-bold text-white">{value.toLocaleString('vi-VN')}</p>
                     </div>
                 ))}
             </div>
 
             <div className="h-48">
+
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={areaData}>
                         <defs>
