@@ -41,9 +41,6 @@ Hệ thống loại bỏ hoàn toàn tình trạng số liệu xung đột giữ
 ## 🖼 Ảnh Chụp Giao Diện Dashboard (Dashboard Preview)
 
 
-
-> *Ảnh chụp thực tế:* Lưu ảnh chụp màn hình vào `docs/screenshots/dashboard.png` để hiển thị trực tiếp trong README:
->
 > ![WMS Dashboard Dark Theme](docs/screenshots/dashboard.png)
 
 ---
