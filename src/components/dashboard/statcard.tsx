@@ -1,7 +1,7 @@
 import { TrendingDown, TrendingUp } from 'lucide-react'
-import type { StatItem } from '../../data/mockData'
+import type { StatCardData } from '../../types/dashboard'
 
-type StatCardProps = StatItem
+type StatCardProps = StatCardData
 
 export default function StatCard({
     title,

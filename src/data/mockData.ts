@@ -1,18 +1,7 @@
-export type StatItem = {
-    id?: string
-    title: string
-    value: string
-    badge: {
-        value: string
-        isPositive?: boolean
-        isNegative?: boolean
-    }
-    comparisonTitle: string
-    comparisonDetail: string
-    trend?: 'up' | 'down' | 'neutral'
-}
+import type { StatCardData } from "../types/dashboard"
 
-export const stats: StatItem[] = [
+
+export const stats: StatCardData[] = [
     {
         title: 'Số Lượng Xuất Kho',
         value: '8,751',
