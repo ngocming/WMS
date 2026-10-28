@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  font-family: Inter, system-ui, sans-serif;
-  color: #e5e7eb;
-  background: #0b1120;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #020817;
+  color: #e2e8f0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 * {
@@ -17,3 +18,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+button, a { transition: all 0.15s ease; }
