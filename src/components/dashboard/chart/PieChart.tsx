@@ -11,7 +11,7 @@ export default function Pie_Chart() {
     const selectedItem = stockConditionData.find(d => d.name === selected)
 
     return (
-        <section className="rounded-xl border border-slate-800 bg-black p-5">
+        <section className="rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
             <h3 className="text-lg font-medium">Tổng Quan Tồn Kho Hàng Lỗi</h3>
             <p className="mt-0.5 text-sm text-zinc-400">
                 Cơ cấu tồn kho hàng lỗi theo từng loại.

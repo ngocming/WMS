@@ -4,12 +4,12 @@ import {
     XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts'
 import { monthlyData } from '../../../data/chartData'
-import { tooltip} from './tool'
+import { tooltip } from './tool'
 
 export default function Bar_Chart() {
     return (
-        <section className="rounded-xl border border-slate-800 bg-black p-5 xl:col-span-2">
-            <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <section className="rounded-xl border border-slate-400/20 bg-black p-5 xl:col-span-2 hover:border-gray-500">
+            <div className="mb-4 flex flex-wrap items-start justify-between gap-3 ">
                 <div>
                     <h3 className="text-lg font-medium">Tổng Quan Nhập / Xuất Kho</h3>
                     <p className="mt-0.5 text-sm text-zinc-400">

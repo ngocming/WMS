@@ -15,7 +15,7 @@ export default function StatCard({
     const TrendIcon = trend === 'down' ? TrendingDown : TrendingUp
 
     return (
-        <div className="rounded-xl border border-slate-800 bg-black p-5 hover:border-gray-500">
+        <div className="rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
             <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-slate-400">{title}</span>
                 <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-semibold 

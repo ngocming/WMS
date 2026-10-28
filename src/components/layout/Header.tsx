@@ -2,7 +2,7 @@ import { Bell, Search } from 'lucide-react'
 
 export default function Header() {
     return (
-        <header className="sticky top-0 z-30 flex items-center justify-between gap-4 border-b border-slate-800 bg-black px-6 py-3">
+        <header className="sticky top-0 z-30 flex items-center justify-between gap-4 border-b border-slate-400/20 bg-black px-6 py-3">
             <div className="hidden md:block">
                 <p className="text-sm text-slate-400">
                     Theo dõi hoạt động kho hàng của bạn

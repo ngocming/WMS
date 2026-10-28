@@ -30,7 +30,7 @@ export default function Line_Chart({ data }: LineChartProps) {
     const isDown = Number(diffPct) < 0
 
     return (
-        <section className="rounded-xl border border-slate-800 bg-black p-5">
+        <section className="rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
             <div>
                 <h3 className="text-lg font-medium">Dòng Hàng Ròng</h3>
                 <p className="mt-0.5 text-sm text-zinc-400">
