@@ -4,8 +4,7 @@ import {
     LineChart, Line,
     XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts'
-
-import { TrendingDown } from 'lucide-react'
+import { TrendingDown, TrendingUp } from 'lucide-react'
 import { netFlowData } from '../../../data/chartData'
 import { tooltip, SectionTitle } from './tool'
 
@@ -24,6 +23,11 @@ export default function Line_Chart({ data }: LineChartProps) {
 
     const firstMonth = visibleData[0]?.month ?? ''
     const lastMonth = visibleData[visibleData.length - 1]?.month ?? ''
+
+    const currentFlow = visibleData[visibleData.length - 1]?.netFlow ?? 0
+    const prevFlow = visibleData[visibleData.length - 2]?.netFlow ?? 0
+    const diffPct = prevFlow > 0 ? (((currentFlow - prevFlow) / prevFlow) * 100).toFixed(1) : '0'
+    const isDown = Number(diffPct) < 0
 
     return (
         <section className="rounded-xl border border-slate-800 bg-black p-5">
@@ -50,7 +54,8 @@ export default function Line_Chart({ data }: LineChartProps) {
             </div>
             <div className="mt-3 border-t border-slate-800 pt-3">
                 <p className="flex items-center gap-1.5 text-xs font-medium">
-                    Xu hướng giảm mạnh (−26.22%) tháng này<TrendingDown className="h-3 w-3" />
+                    Xu hướng {isDown ? `giảm (${diffPct}%)` : `tăng (+${diffPct}%)`} tháng này
+                    {isDown ? <TrendingDown className="h-3 w-3 text-rose-400" /> : <TrendingUp className="h-3 w-3 text-emerald-400" />}
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
                     {firstMonth && lastMonth ? `${firstMonth} – ${lastMonth} · 6 tháng gần nhất` : '6 tháng gần nhất'}

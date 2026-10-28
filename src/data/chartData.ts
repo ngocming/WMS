@@ -1,26 +1,30 @@
-export const monthlyData = [
-    { month: 'Tháng 01', inbound: 120000, outbound: 75000 },
-    { month: 'Tháng 02', inbound: 85000, outbound: 60000 },
-    { month: 'Tháng 03', inbound: 95000, outbound: 70000 },
-    { month: 'Tháng 04', inbound: 110000, outbound: 80000 },
-    { month: 'Tháng 05', inbound: 130000, outbound: 110000 },
-    { month: 'Tháng 06', inbound: 160000, outbound: 500000 },
-    { month: 'Tháng 07', inbound: 210000, outbound: 180000 },
-    { month: 'Tháng 08', inbound: 175000, outbound: 160000 },
-    { month: 'Tháng 09', inbound: 145000, outbound: 130000 },
-    { month: 'Tháng 10', inbound: 70000, outbound: 20000 },
+export interface MonthlyDataPoint {
+    month: string
+    inbound: number
+    outbound: number
+}
+
+export const monthlyData: MonthlyDataPoint[] = [
+    { month: 'Tháng 01', inbound: 124580, outbound: 78320 },
+    { month: 'Tháng 02', inbound: 89410, outbound: 62150 },
+    { month: 'Tháng 03', inbound: 97840, outbound: 71290 },
+    { month: 'Tháng 04', inbound: 113650, outbound: 84720 },
+    { month: 'Tháng 05', inbound: 135290, outbound: 112480 },
+    { month: 'Tháng 06', inbound: 168430, outbound: 147810 },
+    { month: 'Tháng 07', inbound: 214760, outbound: 386350 },
+    { month: 'Tháng 08', inbound: 179240, outbound: 163890 },
+    { month: 'Tháng 09', inbound: 148920, outbound: 132470 },
+    { month: 'Tháng 10', inbound: 72680, outbound: 23410 },
     { month: 'Tháng 11', inbound: 0, outbound: 0 },
     { month: 'Tháng 12', inbound: 0, outbound: 0 },
 ]
 
-export const netFlowData = [
-    { month: 'Apr', netFlow: 35000 },
-    { month: 'May', netFlow: 28000 },
-    { month: 'Jun', netFlow: 15000 },
-    { month: 'Jul', netFlow: 8000 },
-    { month: 'Aug', netFlow: 22000 },
-    { month: 'Sep', netFlow: 18000 },
-]
+export const netFlowData = monthlyData
+    .filter((d) => d.inbound > 0 || d.outbound > 0)
+    .map((d) => ({
+        month: d.month.replace('Tháng ', 'T'),
+        netFlow: Math.abs(d.inbound - d.outbound),
+    }))
 
 export const stockConditionData = [
     { name: 'Loại B', value: 1868 },

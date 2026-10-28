@@ -1,32 +1,55 @@
 import type { StatCardData } from "../types/dashboard"
+import { monthlyData } from "./chartData"
 
+const validMonths = monthlyData.filter((d) => d.inbound > 0 || d.outbound > 0)
+const currentMonth = validMonths[validMonths.length - 1] ?? { inbound: 0, outbound: 0 }
+const prevMonth = validMonths[validMonths.length - 2] ?? { inbound: 0, outbound: 0 }
+
+const totalInbound = validMonths.reduce((sum, d) => sum + d.inbound, 0)
+const totalOutbound = validMonths.reduce((sum, d) => sum + d.outbound, 0)
+const currentStock = Math.max(0, totalInbound - totalOutbound)
+
+const calcChange = (curr: number, prev: number) => {
+    if (prev === 0) return { pct: '0%', isNegative: false, diffText: '0' }
+    const diff = curr - prev
+    const pct = ((diff / prev) * 100).toFixed(1)
+    return {
+        pct: `${diff >= 0 ? '+' : ''}${pct}%`,
+        isNegative: diff < 0,
+        diffText: `${Math.abs(diff).toLocaleString('vi-VN')} đôi`,
+    }
+}
+
+const outboundDiff = calcChange(currentMonth.outbound, prevMonth.outbound)
+const inboundDiff = calcChange(currentMonth.inbound, prevMonth.inbound)
 
 export const stats: StatCardData[] = [
     {
-        title: 'Số Lượng Xuất Kho',
-        value: '8,751',
+        title: 'Số Lượng Xuất Kho (Tháng này)',
+        value: currentMonth.outbound.toLocaleString('vi-VN'),
         badge: {
-            value: '-10.8%',
-            isNegative: true,
+            value: outboundDiff.pct,
+            isNegative: outboundDiff.isNegative,
         },
-        comparisonTitle: 'Thấp hơn tháng trước',
-        comparisonDetail: 'Giảm mạnh (34,532 đôi) so với kỳ trước',
-        trend: 'down',
+        comparisonTitle: outboundDiff.isNegative ? 'Thấp hơn tháng trước' : 'Cao hơn tháng trước',
+        comparisonDetail: `${outboundDiff.isNegative ? 'Giảm' : 'Tăng'} (${outboundDiff.diffText}) so với kỳ trước`,
+        trend: outboundDiff.isNegative ? 'down' : 'up',
     },
     {
-        title: 'Số Lượng Nhập Kho',
-        value: '24,850',
+        title: 'Số Lượng Nhập Kho (Tháng này)',
+        value: currentMonth.inbound.toLocaleString('vi-VN'),
         badge: {
-            value: '+12.8%',
-            isPositive: true,
+            value: inboundDiff.pct,
+            isPositive: !inboundDiff.isNegative,
+            isNegative: inboundDiff.isNegative,
         },
-        comparisonTitle: 'Cao hơn tháng trước',
-        comparisonDetail: 'Tăng trưởng (2,815 đôi) so với kỳ trước',
-        trend: 'up',
+        comparisonTitle: inboundDiff.isNegative ? 'Thấp hơn tháng trước' : 'Cao hơn tháng trước',
+        comparisonDetail: `${inboundDiff.isNegative ? 'Giảm' : 'Tăng'} (${inboundDiff.diffText}) so với kỳ trước`,
+        trend: inboundDiff.isNegative ? 'down' : 'up',
     },
     {
         title: 'Tồn Kho Hiện Tại',
-        value: '42,680',
+        value: currentStock.toLocaleString('vi-VN'),
         badge: {
             value: '+4.5%',
             isPositive: true,
@@ -47,3 +70,4 @@ export const stats: StatCardData[] = [
         trend: 'up',
     },
 ]
+
