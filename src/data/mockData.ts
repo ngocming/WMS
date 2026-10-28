@@ -69,13 +69,13 @@ export const stats: StatCardData[] = [
     },
     {
         title: 'Vòng Quay Tồn Kho',
-        value: '4.6x',
+        value: '4.6',
         badge: {
-            value: '+0.4x',
+            value: '+0.4',
             isPositive: true,
         },
-        comparisonTitle: 'Tốc độ luân chuyển tốt',
-        comparisonDetail: 'Cao hơn mức trung bình ngành 15%',
+        comparisonTitle: 'Cao hơn tháng trước',
+        comparisonDetail: 'Tăng mạnh so với kỳ trước',
         trend: 'up',
     },
 ]
