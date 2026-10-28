@@ -28,13 +28,6 @@ const tooltip = {
     cursor: { fill: 'rgba(255,255,255,0.04)' },
 }
 
-function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-    return (
-        <section className={`rounded-xl border border-slate-800 bg-slate-900 p-5 ${className}`}>
-            {children}
-        </section>
-    )
-}
 
 function SectionTitle({ title, sub }: { title: string; sub?: string }) {
     return (
@@ -59,7 +52,7 @@ export default function InventoryCharts() {
 
     return (
         <div className="mt-6 grid grid-cols-1 gap-5 xl:grid-cols-2">
-            <Card className="xl:col-span-2">
+            <section className="rounded-xl border border-slate-800 bg-black p-5 xl:col-span-2">
                 <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                     <SectionTitle
                         title="Tổng Quan Nhập / Xuất Kho"
@@ -84,9 +77,9 @@ export default function InventoryCharts() {
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
-            </Card>
+            </section>
 
-            <Card>
+            <section className="rounded-xl border border-slate-800 bg-black p-5">
                 <SectionTitle
                     title="Dòng Hàng Ròng"
                     sub="Chênh lệch theo tháng"
@@ -113,9 +106,9 @@ export default function InventoryCharts() {
                     </p>
                     <p className="mt-0.5 text-xs text-slate-500">1 thg 4 – 27 thg 10 · 2026</p>
                 </div>
-            </Card>
+            </section>
 
-            <Card>
+            <section className="rounded-xl border border-slate-800 bg-black p-5">
                 <SectionTitle
                     title="Tồn Kho Hàng Lỗi"
                     sub="Cơ cấu theo từng loại"
@@ -151,9 +144,9 @@ export default function InventoryCharts() {
                     </p>
                     <p className="mt-0.5 text-xs text-slate-500">Cập nhật theo đợt kiểm kê mới nhất</p>
                 </div>
-            </Card>
+            </section>
 
-            <Card className="xl:col-span-2">
+            <section className="xl:col-span-2 rounded-xl border border-slate-800 bg-black p-5">
                 <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                     <SectionTitle
                         title="Sản Lượng Thành Phẩm"
@@ -202,7 +195,7 @@ export default function InventoryCharts() {
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
-            </Card>
+            </section>
 
         </div>
     )
