@@ -28,3 +28,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
+
+.recharts-surface,
+.recharts-wrapper,
+.recharts-tooltip-wrapper,
+.recharts-bar-chart-wrapper,
+.recharts-area-chart-wrapper,
+.recharts-pie-chart-wrapper,
+.recharts-line-chart-wrapper {
+  outline: none !important;
+}

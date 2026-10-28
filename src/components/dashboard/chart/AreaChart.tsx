@@ -20,7 +20,7 @@ export default function Area_Chart() {
             : areaData3M
 
     return (
-        <section className="xl:col-span-2 rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
+        <section className="xl:col-span-2 rounded-xl border border-slate-400/20 bg-black p-5">
             <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                 <div>
                     <h3 className="text-lg font-medium">Sản Lượng Thành Phẩm</h3>
