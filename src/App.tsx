@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import StatCard from './components/dashboard/statcard'
 import { stats } from './data/mockData'
 import Header from './components/layout/Header'
@@ -5,14 +6,16 @@ import Sidebar from './components/layout/Sidebar'
 import InventoryCharts from './components/dashboard/InventoryCharts'
 
 export default function App() {
+  const [collapsed, setCollapsed] = useState(false)
+
   return (
     <div className="flex h-screen bg-black text-slate-200">
-      <Sidebar />
+      <Sidebar collapsed={collapsed} />
 
       <div className="flex flex-1 flex-col overflow-x-hidden">
-        <Header />
+        <Header onToggleSidebar={() => setCollapsed(c => !c)} />
 
-        <main className="flex-1 px-4 py-6 md:px-8">
+        <main className="flex-1 overflow-y-auto px-4 py-6 md:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="mb-6">
               <h1 className="text-xl font-bold text-white md:text-2xl">Dashboard</h1>
@@ -34,4 +37,3 @@ export default function App() {
     </div>
   )
 }
-

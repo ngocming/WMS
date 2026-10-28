@@ -5,7 +5,7 @@ import {
 } from 'recharts'
 import { monthlyData } from '../../../data/chartData'
 import { tooltip } from './tool'
-
+import { CalendarDays } from 'lucide-react'
 export default function Bar_Chart() {
     return (
         <section className="rounded-xl border border-slate-400/20 bg-black p-5 xl:col-span-2 hover:border-gray-500">
@@ -16,8 +16,15 @@ export default function Bar_Chart() {
                         Tháng 01 – Tháng 12 · 2026
                     </p>
                 </div>
-                <span className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-slate-400">
-                    2026
+                <span className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-slate-400 flex items-center gap-2">
+                    <CalendarDays size={16} className='text-white' />
+                    <select
+                        className='bg-transparent text-white border-none outline-none'
+                        value='2026'
+                        onChange={(e) => console.log(e.target.value)}
+                    >
+                        <option value="2026" className="bg-slate-800">2026</option>
+                    </select>
                 </span>
             </div>
             <div className="h-72">
