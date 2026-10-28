@@ -6,7 +6,7 @@ import InventoryCharts from './components/dashboard/InventoryCharts'
 
 export default function App() {
   return (
-    <div className="flex min-h-screen bg-[#0b0f17] text-slate-200">
+    <div className="flex h-screen bg-black text-slate-200">
       <Sidebar />
 
       <div className="flex flex-1 flex-col overflow-x-hidden">

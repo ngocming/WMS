@@ -1,0 +1,38 @@
+import {
+    ResponsiveContainer,
+    BarChart, Bar,
+    XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts'
+import { monthlyData } from '../../../data/chartData'
+import { tooltip, SectionTitle } from './tool'
+
+export default function Bar_Chart() {
+    return (
+        <section className="rounded-xl border border-slate-800 bg-black p-5 xl:col-span-2">
+            <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <SectionTitle
+                    title="Tổng Quan Nhập / Xuất Kho"
+                    sub="Tháng 01 – Tháng 12 · 2026"
+                />
+                <span className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-slate-400">
+                    2026
+                </span>
+            </div>
+            <div className="h-72">
+                <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={monthlyData} barCategoryGap="25%" barGap={3}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
+                        <XAxis dataKey="month" stroke="#475569" tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
+                        <YAxis stroke="#475569" tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
+                        <Tooltip {...tooltip} formatter={(value: number, name: string) => [
+                            Number(value).toLocaleString('vi-VN'), name
+                        ]} />
+                        <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '12px' }} />
+                        <Bar dataKey="inbound" name="Nhập kho" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="outbound" name="Xuất kho" fill="#ec4899" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
+        </section>
+    )
+}

@@ -10,7 +10,7 @@ export default function Header() {
             </div>
 
             <div className="ml-auto flex items-center gap-3">
-                <div className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-400 focus-within:border-blue-500">
+                <div className="flex items-center gap-2 rounded-lg border border-slate-700 bg-black px-3 py-2 text-sm text-slate-400 focus-within:border-blue-500">
                     <Search size={15} />
                     <input
                         placeholder="Tìm kiếm..."
@@ -22,10 +22,9 @@ export default function Header() {
                     <span className="absolute right-0 top-0 h-1.5 w-1.5 rounded-full bg-blue-500" />
                 </div>
 
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-xs font-bold text-white">
                     A
                 </div>
-                <span className="hidden text-sm sm:inline">Admin</span>
             </div>
         </header>
     )
