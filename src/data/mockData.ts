@@ -7,12 +7,15 @@ const currentMonth = validMonths[validMonths.length - 1] ?? { inbound: 0, outbou
 
 const prevMonth = validMonths[validMonths.length - 2] ?? { inbound: 0, outbound: 0 }
 
-const totalInbound = validMonths.reduce((sum, d) => sum + d.inbound, 0)
+let currentStock = currentMonth.inbound - currentMonth.outbound
+if (currentStock < 0) {
+    currentStock = 0
+}
 
-const totalOutbound = validMonths.reduce((sum, d) => sum + d.outbound, 0)
-
-const currentStock = Math.max(0, totalInbound - totalOutbound)
-
+let prevStock = prevMonth.inbound - prevMonth.outbound
+if (prevStock < 0) {
+    prevStock = 0
+}
 const calcChange = (curr: number, prev: number) => {
     if (prev === 0) return { pct: '0%', isNegative: false, diffText: '0' }
     const diff = curr - prev
@@ -26,6 +29,7 @@ const calcChange = (curr: number, prev: number) => {
 
 const outboundDiff = calcChange(currentMonth.outbound, prevMonth.outbound)
 const inboundDiff = calcChange(currentMonth.inbound, prevMonth.inbound)
+const StockDiff = calcChange(currentStock, prevStock)
 
 export const stats: StatCardData[] = [
     {
@@ -55,12 +59,13 @@ export const stats: StatCardData[] = [
         title: 'Tồn Kho Hiện Tại',
         value: currentStock.toLocaleString('vi-VN'),
         badge: {
-            value: '+4.5%',
-            isPositive: true,
+            value: StockDiff.pct,
+            isPositive: !StockDiff.isNegative,
+            isNegative: StockDiff.isNegative,
         },
-        comparisonTitle: 'Mức dự trữ an toàn',
-        comparisonDetail: 'Đạt 95% công suất thiết kế của kho',
-        trend: 'up',
+        comparisonTitle: StockDiff.isNegative ? 'Thấp hơn tháng trước' : 'Cao hơn tháng trước',
+        comparisonDetail: `${StockDiff.isNegative ? 'Giảm' : 'Tăng'} (${StockDiff.diffText}) so với kỳ trước`,
+        trend: StockDiff.isNegative ? 'down' : 'up',
     },
     {
         title: 'Vòng Quay Tồn Kho',

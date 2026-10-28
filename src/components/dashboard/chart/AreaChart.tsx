@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
     ResponsiveContainer,
     AreaChart, Area,
-    XAxis, YAxis, CartesianGrid, Tooltip,
+    XAxis, CartesianGrid, Tooltip,
 } from 'recharts'
 import { areaData3M, areaData30D, areaData7D, brandProduction } from '../../../data/chartData'
 import { tooltip } from '../UI/Tooltip'
@@ -60,7 +60,7 @@ export default function Area_Chart() {
             <div className="h-48">
 
                 <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={areaData}>
+                    <AreaChart data={areaData} margin={{ left: 20, right: 20, top: 10, bottom: 0 }} >
                         <defs>
                             <linearGradient id="ugGrad" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.25} />
@@ -68,13 +68,12 @@ export default function Area_Chart() {
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-                        <XAxis dataKey="date" stroke="#475569" tick={{ fontSize: 9, fill: '#64748b' }} tickLine={false} axisLine={false} />
-                        <YAxis stroke="#475569" tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
+                        <XAxis dataKey="date" interval={0} stroke="#475569" tick={{ fontSize: 9, fill: '#64748b' }} tickLine={false} axisLine={false} />
                         <Tooltip {...tooltip} formatter={(v: number) => [v.toLocaleString(), 'UGG']} />
                         <Area type="monotone" dataKey="UGG" stroke="#3b82f6" strokeWidth={2} fill="url(#ugGrad)" dot={false} activeDot={{ r: 4, fill: '#60a5fa' }} />
                     </AreaChart>
                 </ResponsiveContainer>
             </div>
-        </section>
+        </section >
     )
 }

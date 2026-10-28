@@ -36,11 +36,14 @@ export default function Sidebar({ collapsed }: SidebarProps) {
                 </div>
                 {!collapsed && (
                     <div className="overflow-hidden leading-tight">
-                        <span className="block text-xs font-bold uppercase tracking-wider text-white">
+                        <span className="block text-xs font-bold uppercase tracking-wider text-slate-400">
                             Warehouse
                         </span>
-                        <span className="block text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-                            Management System
+                        <span className="block text-xs font-bold uppercase tracking-wider text-slate-400">
+                            Management
+                        </span>
+                        <span className="block text-xs font-bold uppercase tracking-wider text-slate-400">
+                            System
                         </span>
                     </div>
                 )}

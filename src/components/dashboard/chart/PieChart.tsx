@@ -11,12 +11,12 @@ export default function Pie_Chart() {
     const selectedItem = stockConditionData.find(d => d.name === selected)
 
     return (
-        <section className="rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
+        <section className="flex h-full flex-col rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
             <h3 className="text-lg font-medium">Tổng Quan Tồn Kho Hàng Lỗi</h3>
             <p className="mt-0.5 text-sm text-zinc-400">
                 Cơ cấu tồn kho hàng lỗi theo từng loại.
             </p>
-            <div className="relative h-52">
+            <div className="relative h-80">
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
@@ -61,7 +61,7 @@ export default function Pie_Chart() {
                 </div>
             </div>
 
-            <div className="mt-3 flex justify-center">
+            <div className="mt-0.5 flex justify-center">
                 <div className="relative inline-block">
                     <span
                         className="absolute left-3 top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full"
@@ -70,7 +70,7 @@ export default function Pie_Chart() {
                     <select
                         value={selected}
                         onChange={e => setSelected(e.target.value)}
-                        className="appearance-none rounded-lg border border-slate-700 bg-black py-2 pl-8 pr-8 text-sm text-slate-200 outline-none focus:border-blue-500 cursor-pointer"
+                        className="appearance-none rounded-lg border border-slate-700 bg-black py-2 pl-8 pr-8 text-sm text-slate-200"
                     >
                         {stockConditionData.map(d => (
                             <option key={d.name} value={d.name}>{d.name}</option>
@@ -82,7 +82,7 @@ export default function Pie_Chart() {
                 </div>
             </div>
 
-            <div className="mt-4 border-t border-slate-800 pt-4">
+            <div className="mt-auto border-t border-slate-800 pt-4">
                 <p className="text-sm font-semibold text-white">
                     Số lượng kiểm kê : {TOTAL.toLocaleString('vi-VN')} (prs/pcs)
                 </p>
@@ -90,6 +90,6 @@ export default function Pie_Chart() {
                     Tổng số lượng tồn kho được cập nhật theo kiểm kê mới nhất.
                 </p>
             </div>
-        </section>
+        </section >
     )
 }

@@ -14,7 +14,7 @@ export const monthlyData: MonthlyDataPoint[] = [
     { month: 'Tháng 07', inbound: 214760, outbound: 386350 },
     { month: 'Tháng 08', inbound: 179240, outbound: 163890 },
     { month: 'Tháng 09', inbound: 148920, outbound: 132470 },
-    { month: 'Tháng 10', inbound: 72680, outbound: 23410 },
+    { month: 'Tháng 10', inbound: 72680, outbound: 32410 },
     { month: 'Tháng 11', inbound: 0, outbound: 0 },
     { month: 'Tháng 12', inbound: 0, outbound: 0 },
 ]
@@ -41,13 +41,13 @@ export const areaData3M = [
 ].map((date, i) => ({ date, UGG: seed(i, 150000, 80000) }))
 
 export const areaData30D = Array.from({ length: 30 }, (_, i) => ({
-    date: `${i + 1} thg 10`,
+    date: `${i + 1} /10`,
     UGG: seed(i, 130000, 60000, 1),
 }))
 
 export const areaData7D = [
-    '8 thg 10', '9 thg 10', '10 thg 10',
-    '11 thg 10', '12 thg 10', '13 thg 10', '14 thg 10',
+    '8/10', '9/10', '10/10',
+    '11/10', '12/10', '13/10', '14/10',
 ].map((date, i) => ({ date, UGG: seed(i, 120000, 40000, 2) }))
 
 export const brandProduction = [

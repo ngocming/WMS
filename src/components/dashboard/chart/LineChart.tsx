@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
     ResponsiveContainer,
     LineChart, Line,
-    XAxis, YAxis, CartesianGrid, Tooltip,
+    XAxis, CartesianGrid, Tooltip,
 } from 'recharts'
 import { TrendingDown, TrendingUp } from 'lucide-react'
 import { netFlowData } from '../../../data/chartData'
@@ -30,19 +30,18 @@ export default function Line_Chart({ data }: LineChartProps) {
     const isDown = Number(diffPct) < 0
 
     return (
-        <section className="rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
+        <section className="flex h-full flex-col rounded-xl border border-slate-400/20 bg-black p-5 hover:border-gray-500">
             <div>
                 <h3 className="text-lg font-medium">Dòng Hàng Ròng</h3>
                 <p className="mt-0.5 text-sm text-zinc-400">
                     Dòng chảy ròng hàng hóa (chênh lệch giữa nhập và xuất của kho theo thời gian) trong 6 tháng
                 </p>
             </div>
-            <div className="mt-4 h-52">
+            <div className="relative flex-1">
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={visibleData}>
+                    <LineChart data={visibleData} margin={{ left: 15, right: 15, top: 10, bottom: 0 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-                        <XAxis dataKey="month" stroke="#475569" tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
-                        <YAxis stroke="#475569" tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
+                        <XAxis dataKey="month" interval={0} stroke="#475569" tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
                         <Tooltip {...tooltip} formatter={(v: number) => [v.toLocaleString(), 'Chênh lệch']} />
                         <Line
                             type="monotone" dataKey="netFlow"
@@ -54,7 +53,7 @@ export default function Line_Chart({ data }: LineChartProps) {
                     </LineChart>
                 </ResponsiveContainer>
             </div>
-            <div className="mt-3 border-t border-slate-800 pt-3">
+            <div className="mt-4 border-t border-slate-800 pt-4">
                 <p className="flex items-center gap-1.5 text-xs font-medium">
                     Xu hướng {isDown ? `giảm (${diffPct}%)` : `tăng (+${diffPct}%)`} tháng này
                     {isDown ? <TrendingDown className="h-3 w-3 text-white" /> : <TrendingUp className="h-3 w-3 text-white" />}
