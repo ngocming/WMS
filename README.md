@@ -20,7 +20,7 @@ Hệ thống loại bỏ hoàn toàn tình trạng số liệu xung đột giữ
 | :--- | :--- | :--- |
 | **KPI Xuất Kho (Tháng này)** | Lấy từ `monthlyData[current].outbound` | So sánh tự động với tháng liền trước tính % tăng/giảm và số lượng chênh lệch |
 | **KPI Nhập Kho (Tháng này)** | Lấy từ `monthlyData[current].inbound` | So sánh tự động với tháng trước, định dạng số bản địa (`vi-VN`) |
-| **KPI Tồn Kho Hiện Tại** | `∑ Nhập Kho − ∑ Xuất Kho` | Phản ánh chính xác tổng lượng hàng đang lưu kho thực tế |
+| **KPI Tồn Kho Hiện Tại** | `Nhập Kho − Xuất Kho` | Phản ánh chính xác tổng lượng hàng đang lưu kho thực tế |
 | **Biểu Đồ Cột (Bar Chart)** | Trực quan hóa 12 tháng từ `monthlyData` | Tương quan dòng nhập và xuất kho theo từng chu kỳ |
 | **Dòng Hàng Ròng (Line Chart)** | Dẫn xuất động: `\|inbound − outbound\|` | Trượt 6 tháng gần nhất, tự động tính xu hướng tăng/giảm tháng mới nhất |
 | **Cơ Cấu Hàng Lỗi (Pie Chart)** | `stockConditionData` (Loại B, Loại khác) | Donut Chart với vòng active viền nổi, dropdown chọn loại xem chi tiết số lượng tâm và kiểm kê tổng |
@@ -40,25 +40,7 @@ Hệ thống loại bỏ hoàn toàn tình trạng số liệu xung đột giữ
 
 ## 🖼 Ảnh Chụp Giao Diện Dashboard (Dashboard Preview)
 
-```text
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│  WMS Dashboard                                                           [Search] [🔔]  │
-├──────────────┬─────────────────────────────────────────────────────────────────────────┤
-│ 📊 Tổng quan │  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐│
-│ 📥 Nhập kho  │  │ Xuất Kho      │ │ Nhập Kho      │ │ Tồn Kho       │ │ Vòng Quay     ││
-│ 📤 Xuất kho  │  │ 23.410 đôi    │ │ 72.680 đôi    │ │ 164.720 đôi   │ │ 4.6x          ││
-│ 📦 Hàng tồn  │  │ ↓ -82.3%      │ │ ↓ -51.2%      │ │ ↑ Đạt 95% CS  │ │ ↑ +15% TB     ││
-│ 🏷️ Nhãn hiệu │  └───────────────┘ └───────────────┘ └───────────────┘ └───────────────┘│
-│ ⚙️ Cài đặt   │  ┌───────────────────────────────────────────────┐ ┌───────────────────┐│
-│              │  │ Biểu đồ Nhập/Xuất 12 tháng (Bar Chart)        │ │ Dòng Hàng Ròng    ││
-│              │  │ █ Nhập kho   █ Xuất kho                       │ │ (Line Chart 6M)   ││
-│              │  └───────────────────────────────────────────────┘ └───────────────────┘│
-│              │  ┌───────────────────────────────────────────────┐ ┌───────────────────┐│
-│              │  │ Sản Lượng Thành Phẩm (Area Chart) [7D|30D|3M] │ │ Tồn Kho Hàng Lỗi  ││
-│              │  │ [ UGG: 183.892 ] [ TEVA: 0 ] [ KOOLA: 0 ]     │ │ (Donut + Filter)  ││
-│              │  └───────────────────────────────────────────────┘ └───────────────────┘│
-└──────────────┴─────────────────────────────────────────────────────────────────────────┘
-```
+
 
 > *Ảnh chụp thực tế:* Lưu ảnh chụp màn hình vào `docs/screenshots/dashboard.png` để hiển thị trực tiếp trong README:
 >
