@@ -30,6 +30,12 @@ body {
 }
 
 .recharts-surface,
+.recharts-wrapper {
+  outline: none !important;
+}
+
+
+.recharts-surface,
 .recharts-wrapper,
 .recharts-tooltip-wrapper,
 .recharts-bar-chart-wrapper,
