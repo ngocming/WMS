@@ -3,7 +3,7 @@ import StatCard from './components/dashboard/statcard'
 import { stats } from './data/mockData'
 import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
-
+import InventoryCharts from './components/dashboard/InventoryCharts'
 export default function App() {
   return (
     <div className="flex h-screen overflow-hidden bg-slate-900 text-slate-200">
@@ -26,10 +26,8 @@ export default function App() {
               <StatCard key={stat.title} {...stat} />
             ))}
           </section>
-          <p className='mt-2 text-sm text-slate-400'>
-            Hello World
-
-          </p>
+          <InventoryCharts />
+          
         </main>
       </div>
     </div>
